@@ -6,22 +6,22 @@ import { Button, Grid, makeStyles } from "@material-ui/core";
 
 let useStyles = makeStyles((theme) => ({
   root: {
-    height: "100%"
+    height: "100%",
   },
   post_grid: {
     display: "grid",
     gridTemplateColumns: "50% 50%",
     gridTemplateRows: "auto",
     gridAutoRows: "auto",
-    gap: "5px"
+    gap: "5px",
   },
   postImage: {
-    content: "cover"
+    content: "cover",
   },
   postImg: {
     width: "100%",
     height: "100%",
-    objectFit: "contain"
+    objectFit: "contain",
   },
   btn: {
     color: theme.palette.grey[600],
@@ -29,8 +29,8 @@ let useStyles = makeStyles((theme) => ({
     border: "1px solid ",
     borderWidth: "2px",
     borderImageSlice: 1,
-    borderImageSource: "linear-gradient(180deg, #d53369 0%, #daae51 100%)"
-  }
+    borderImageSource: "linear-gradient(180deg, #d53369 0%, #daae51 100%)",
+  },
 }));
 
 // create two columns and populate
@@ -41,6 +41,7 @@ const PostReel = ({ posts }) => {
 
   useEffect(() => {
     let createColumns = () => {
+      setColumns([[], []]);
       posts.forEach((post, i) => {
         if (i < page * 10) {
           if (i % 2 === 0) {
@@ -50,10 +51,13 @@ const PostReel = ({ posts }) => {
         }
       });
     };
-    createColumns();
+    if (posts.length) createColumns();
+    return () => {
+      posts = [];
+    };
   }, [page, posts]);
 
-  return (
+  return posts.length ? (
     <Grid container justifyContent="center">
       <Grid item container justifyContent="center">
         {columns[0].length !== 0 ? (
@@ -73,7 +77,7 @@ const PostReel = ({ posts }) => {
           <p>loading posts</p>
         )}
       </Grid>
-      {page < 10 && (
+      {page * 10 < posts.length && (
         <Grid item container style={{ padding: "15px 0" }} xs={6}>
           <Button
             onClick={() => setPage((prev) => ++prev)}
@@ -85,6 +89,8 @@ const PostReel = ({ posts }) => {
         </Grid>
       )}
     </Grid>
+  ) : (
+    <p>nothing found</p>
   );
 };
 
