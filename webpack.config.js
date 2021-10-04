@@ -7,7 +7,7 @@ module.exports = {
     },
     devServer: {
         port: 3001,
-        watchContentBase: true,
+        watchFiles: './dist'
     },
     module: {
         rules: [
@@ -21,9 +21,10 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
+                    'style-loader',
                     'css-loader'
                 ]
             }
-        ]
-    }
+        ],
+    },
 }
