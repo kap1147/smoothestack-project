@@ -1,5 +1,5 @@
 # smoothestack-project
-This is a demo React project. <br />
+This is a demo React application. <br />
 Inspired by the <strong>Prototyping In Figma</strong> example.
 
 Data pulled from: <br />
