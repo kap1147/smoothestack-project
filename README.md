@@ -11,7 +11,8 @@ user: virgil@smoothestack.com <br />
 password: 123456
 
 Dependencies: <br />
-- Material-UI <br />
-- React Router <br />
-- Redux <br />
-- Webpack <br />
+- @material-ui <br />
+- react-router-dom <br />
+- react-transition-group <br/>
+- react-redux <br />
+- webpack <br />
