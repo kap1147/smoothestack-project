@@ -38,8 +38,6 @@ export default function App() {
     }
   }, [dispatch, users]);
 
-  console.log("users: ", users);
-
   return (
     <Router>
       <Switch>

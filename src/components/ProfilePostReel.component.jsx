@@ -56,7 +56,6 @@ let useStyles = makeStyles((theme) => ({
 
 // create two columns and populate
 const PostReel = ({ posts }) => {
-  console.log(posts);
   const { comments } = useSelector((state) => state.database);
   let classes = useStyles();
 

@@ -20,7 +20,6 @@ let useStyles = makeStyles((theme) => ({
 
 const DiscoverSlider = ({ data }) => {
   let classes = useStyles();
-  console.log(data);
 
   return data ? (
     <Grid container wrap="nowrap" className={classes.root}>

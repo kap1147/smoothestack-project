@@ -89,10 +89,11 @@ const PostDetailPage = ({ match }) => {
   let theme = useTheme();
 
   const showComments = () => {
-    return postComments.map((comment) => {
+    return postComments.map((comment, i) => {
       let liked = Boolean(comment.likes.find(item => Number(item) === Number(user.id)))
       return (
       <Grid
+        key={i}
         container
         wrap="nowrap"
         style={{
@@ -226,8 +227,6 @@ const PostDetailPage = ({ match }) => {
       setPostComments(comments.filter((element) => element.postId === post.id));
     }
   }, [comments, post, postComments]);
-
-  console.log("comments", postComments);
 
   return (
     <Grid container direction="column" className={classes.root}>
