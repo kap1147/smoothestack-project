@@ -1,7 +1,7 @@
 # smoothestack-project
 
 This is a React demo application. <br />
-Inspired by the <strong>Prototyping In Figma</strong> example.
+Inspired by Figma's <strong>Prototyping In Figma</strong> example.
 
 APIs: <br />
 https://jsonplaceholder.typicode.com/ <br />
