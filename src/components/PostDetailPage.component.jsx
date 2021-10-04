@@ -70,6 +70,10 @@ let useStyles = makeStyles((theme) => ({
     "&:hover": {
       cursor: "pointer"
     }
+  },
+  likeStyles: {
+    background: "linear-gradient(180deg, #d53369 0%, #daae51 100%)",
+    color: "#fff"
   }
 }));
 
@@ -85,7 +89,9 @@ const PostDetailPage = ({ match }) => {
   let theme = useTheme();
 
   const showComments = () => {
-    return postComments.map((comment) => (
+    return postComments.map((comment) => {
+      let liked = Boolean(comment.likes.find(item => Number(item) === Number(user.id)))
+      return (
       <Grid
         container
         wrap="nowrap"
@@ -129,15 +135,15 @@ const PostDetailPage = ({ match }) => {
             <Button className={classes.btn}>reply</Button>
             <Button
               onClick={(e) => handleCommentLike(e, comment.id)}
-              className={classes.btn}
-              style={{ marginLeft: "12px" }}
+              className={liked ? `${classes.btn} ${classes.likeStyles}` : classes.btn}
+              style={{ marginLeft: "12px",}}
             >
               like
             </Button>
           </Grid>
         </Grid>
       </Grid>
-    ));
+    )});
   };
 
   const duration = 300;
