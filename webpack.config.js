@@ -7,7 +7,8 @@ module.exports = {
     },
     devServer: {
         port: 3001,
-        watchFiles: './dist'
+        watchFiles: './dist',
+        historyApiFallback: true,
     },
     module: {
         rules: [
@@ -24,7 +25,7 @@ module.exports = {
                     'style-loader',
                     'css-loader'
                 ]
-            }
+            },
         ],
     },
 }
