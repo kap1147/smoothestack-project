@@ -2,7 +2,7 @@
 This is a demo React application. <br />
 Inspired by the <strong>Prototyping In Figma</strong> example.
 
-Data pulled from: <br />
+APIs: <br />
 https://jsonplaceholder.typicode.com/ <br />
 https://picsum.photos/
 
