@@ -9,3 +9,8 @@ https://picsum.photos/
 LOGIN <br />
 user: virgil@smoothestack.com <br />
 password: 123456
+
+Dependencies: <br />
+Material-UI <br />
+Redux <br />
+React Router
