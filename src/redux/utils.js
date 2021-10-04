@@ -1,3 +1,8 @@
+export const addComment = (comments, newComment) => {
+  newComment.id = comments.length + 1;
+  return [...comments, newComment];
+};
+
 export const addError = (errors, payload) => {
   for (const [key] of Object.entries(errors)) {
     if (key === payload.type) {

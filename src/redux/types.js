@@ -1,4 +1,5 @@
 export var ADD_ERROR = "ADD_ERROR";
+export var ADD_COMMENT = "ADD_COMMENT";
 export var CLEAR_DB = "CLEAR_DB";
 export var CLEAR_ERRORS = "CLEAR_ERRORS";
 export var LOADING_DB = "LOADING_DB";

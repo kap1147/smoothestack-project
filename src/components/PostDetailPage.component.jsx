@@ -82,11 +82,12 @@ const PostDetailPage = ({ match }) => {
   let [post, setPost] = useState(null);
   let [postComments, setPostComments] = useState([]);
   let { comments, posts, users } = useSelector((state) => state.database);
-  let { isAuthenticated, user } = useSelector((state) => state.user);
+  let { user } = useSelector((state) => state.user);
   let [author, setUser] = useState(null);
   let classes = useStyles();
   let dispatch = useDispatch();
   let theme = useTheme();
+  let [value, setValue] = useState("");
 
   const showComments = () => {
     return postComments.map((comment, i) => {
@@ -102,13 +103,14 @@ const PostDetailPage = ({ match }) => {
           backgroundColor: "#fff"
         }}
       >
-        <Grid>
+        <Grid item container>
           <Grid item container wrap="nowrap">
             <Grid item style={{ paddingTop: "36px" }}>
               <Avatar alt={comment.name}>{comment.email[0]}</Avatar>
             </Grid>
-            <Grid item style={{ paddingLeft: "12px" }}>
+            <Grid item container style={{ paddingLeft: "12px" }}>
               <Grid
+                item
                 container
                 justifyContent="space-between"
                 alignItems="center"
@@ -120,7 +122,7 @@ const PostDetailPage = ({ match }) => {
                   {comment.likes.length} likes
                 </Typography>
               </Grid>
-              <Grid style={{ padding: "12px 0" }}>
+              <Grid item style={{ padding: "12px 0", width: "100%" }}>
                 <hr />
               </Grid>
               <Typography variant="body2">
@@ -207,6 +209,21 @@ const PostDetailPage = ({ match }) => {
     e.preventDefault();
     setIsOpen({ ...isOpen, overlay: true });
   };
+
+  let handleSubmit = (e) => {
+    e.preventDefault();
+    // let redux handle adding id
+    let newComment = {
+      postId: post.id,
+      name: user.name,
+      email: user.email,
+      body: value,
+      likes: []
+    }
+    dispatch(allActions.databaseActions.addComment(newComment));
+    setValue("")
+  }
+
   // get post data
   useEffect(() => {
     if (!post && posts.length) {
@@ -225,6 +242,11 @@ const PostDetailPage = ({ match }) => {
   useEffect(() => {
     if (post && comments.length && !postComments.length) {
       setPostComments(comments.filter((element) => element.postId === post.id));
+    } else if (post && comments.length && postComments.length) {
+      let myComments = comments.filter((element) => element.postId === post.id);
+      if (postComments.length !== myComments.length) {
+        setPostComments(myComments)
+      }
     }
   }, [comments, post, postComments]);
 
@@ -336,15 +358,19 @@ const PostDetailPage = ({ match }) => {
               </Grid>
             )}
           </Transition>
+          <form onSubmit={handleSubmit}>
           <Grid
             container
             alignItems="center"
             style={{ padding: "12px", marginBottom: 0 }}
           >
             <textarea
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
               disabled={user.id === post.userId}
               rows="5"
               style={{ flex: 1 }}
+              required
             ></textarea>
           </Grid>
           <Grid style={{ padding: "0 12px 12px 12px" }}>
@@ -352,10 +378,12 @@ const PostDetailPage = ({ match }) => {
               disabled={user.id === post.userId}
               fullWidth
               className={classes.btnComment}
+              type="submit"
             >
               add comment
             </Button>
-          </Grid>
+          </Grid></form>
+          
         </Grid>
       ) : (
         <Grid

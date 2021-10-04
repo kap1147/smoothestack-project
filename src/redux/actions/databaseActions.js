@@ -1,4 +1,5 @@
 import {
+  ADD_COMMENT,
   LOADING_DB,
   SET_COMMENTS,
   SET_POSTS,
@@ -25,6 +26,10 @@ const addLikes = (arr) => {
 };
 
 // Actions
+const addComment = (comment) => (dispatch) => {
+  dispatch({type: ADD_COMMENT, payload: comment})
+};
+
 const fetchComments = () => (dispatch) => {
   dispatch({ type: LOADING_DB, payload: true });
   fetch("https://jsonplaceholder.typicode.com/comments")
@@ -73,4 +78,4 @@ const toggleLikeComment = (id, userId) => (dispatch) => {
   dispatch({ type: TOGGLE_LIKE_COMMENT, payload: { id, userId } });
 };
 
-export default { fetchComments, fetchPosts, fetchUsers, toggleLikeComment };
+export default { addComment, fetchComments, fetchPosts, fetchUsers, toggleLikeComment };

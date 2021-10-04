@@ -1,6 +1,7 @@
-import { toggleCommentLike } from "../utils";
+import { addComment, toggleCommentLike } from "../utils";
 
 import {
+  ADD_COMMENT,
   CLEAR_DB,
   LOADING_DB,
   SET_COMMENTS,
@@ -18,6 +19,11 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
+    case ADD_COMMENT:
+      return {
+        ...state,
+        comments: addComment(state.comments, action.payload)
+      };
     case CLEAR_DB:
       return initialState;
     case LOADING_DB:
