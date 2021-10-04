@@ -6,13 +6,13 @@ APIs: <br />
 https://jsonplaceholder.typicode.com/ <br />
 https://picsum.photos/
 
-LOGIN <br />
-user -> virgil@smoothestack.com <br />
-password -> 123456
-
 Show-off: <br />
 - @material-ui <br />
 - react-router-dom <br />
 - react-transition-group <br/>
 - react-redux <br />
 - webpack <br />
+
+<strong>Login</strong> <br />
+user -> virgil@smoothestack.com <br />
+password -> 123456
