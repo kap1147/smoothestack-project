@@ -1,5 +1,5 @@
 import React from "react";
-import allActions from "./redux/actions";
+import allActions from "../redux/actions";
 // Npm
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";

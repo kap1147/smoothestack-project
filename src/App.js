@@ -4,14 +4,14 @@ import allActions from "./redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // Components
-import SearchPage from "./SearchPage.component.jsx";
-import HomePage from "./HomePage.component.jsx";
-import LandingPage from "./LandingPage.component.jsx";
-import NotificationPage from "./NotificationPage.component.jsx";
-import PostDetailPage from "./PostDetailPage.component.jsx";
-import ProfilePage from "./ProfilePage.component.jsx";
-import SigninPage from "./SigninPage.compnent.jsx";
-import SignupPage from "./SignupPage.component.jsx";
+import SearchPage from "./components/SearchPage.component.jsx";
+import HomePage from "./components/HomePage.component.jsx";
+import LandingPage from "./components/LandingPage.component.jsx";
+import NotificationPage from "./components/NotificationPage.component.jsx";
+import PostDetailPage from "./components/PostDetailPage.component.jsx";
+import ProfilePage from "./components/ProfilePage.component.jsx";
+import SigninPage from "./components/SigninPage.compnent.jsx";
+import SignupPage from "./components/SignupPage.component.jsx";
 // Style
 import "./index.css";
 

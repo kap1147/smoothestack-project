@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import allActions from "./redux/actions";
+import allActions from "../redux/actions";
 // Npm
 import { useDispatch, useSelector } from "react-redux";
 import { Transition } from "react-transition-group";
