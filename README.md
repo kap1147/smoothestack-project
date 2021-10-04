@@ -1,5 +1,5 @@
 # smoothestack-project
-demo React project. 
+demo React project. <br />
 Inspired by the "Prototyping In Figma" example.
 
 Data pulled from:
