@@ -1,11 +1,11 @@
 # smoothestack-project
-demo React project. <br />
-Inspired by the "Prototyping In Figma" example.
+This is a demo React project. <br />
+Inspired by the <strong>Prototyping In Figma</strong> example.
 
 Data pulled from: <br />
 https://jsonplaceholder.typicode.com/ <br />
 https://picsum.photos/
 
 LOGIN <br />
-user: virgil@smoothestack.com <br />
-password: anything
+user: 'virgil@smoothestack.com' <br />
+password: '123456'
