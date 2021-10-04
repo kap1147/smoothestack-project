@@ -1,5 +1,6 @@
 # smoothestack-project
-This is a demo React application. <br />
+
+This is a React demo application. <br />
 Inspired by the <strong>Prototyping In Figma</strong> example.
 
 APIs: <br />
@@ -7,6 +8,7 @@ https://jsonplaceholder.typicode.com/ <br />
 https://picsum.photos/
 
 Show-off: <br />
+
 - react
 - @material-ui <br />
 - react-router-dom <br />
