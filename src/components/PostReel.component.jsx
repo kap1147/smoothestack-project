@@ -77,7 +77,7 @@ const PostReel = ({ posts }) => {
           <p>loading posts</p>
         )}
       </Grid>
-      {page * 10 < posts.length && (
+      {posts.length && page * 10 < posts.length && (
         <Grid item container style={{ padding: "15px 0" }} xs={6}>
           <Button
             onClick={() => setPage((prev) => ++prev)}
