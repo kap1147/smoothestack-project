@@ -1,12 +1,13 @@
 import React from "react";
 // Mui stuff
 import { Avatar, Grid, makeStyles, Typography } from "@material-ui/core";
+import { useHistory } from "react-router";
 
 const DiscoverCard = ({ item }) => {
   let useStyles = makeStyles((theme) => ({
     root: {
       minWidth: "100%",
-      scrollSnapAlign: "start"
+      scrollSnapAlign: "start",
     },
     row_img: {
       background: `url(${item.img})`,
@@ -14,18 +15,28 @@ const DiscoverCard = ({ item }) => {
       backgroundPosition: "center",
       backgroundSize: "cover",
       height: "300px",
-      width: "100%"
+      width: "100%",
+      "&:hover": {
+        cursor: "pointer",
+      },
     },
     subtitle: {
-      color: theme.palette.grey[600]
-    }
+      color: theme.palette.grey[600],
+    },
   }));
   let classes = useStyles();
+  let history = useHistory();
+
+  // handlers
+  let handleClick = (e) => {
+    e.preventDefault();
+    history.push(`/post/${item.postId}`);
+  };
 
   return (
     <Grid item xs={12} className={classes.root}>
       {/* image row */}
-      <Grid className={classes.row_img} />
+      <Grid onClick={handleClick} className={classes.row_img} />
       {/* content row */}
       <Grid
         container
