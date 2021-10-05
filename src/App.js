@@ -3,6 +3,8 @@ import allActions from "./redux/actions";
 // NPM
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// HOC
+import AuthRoute from "./components/AuthRoute.hoc.jsx";
 // Components
 import SearchPage from "./components/SearchPage.component.jsx";
 import HomePage from "./components/HomePage.component.jsx";
@@ -41,12 +43,12 @@ export default function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={HomePage} />
+        <AuthRoute exact path="/" component={HomePage} />
         <Route exact path="/landing" component={LandingPage} />
-        <Route exact path="/notifications" component={NotificationPage} />
-        <Route exact path="/post/:postId" component={PostDetailPage} />
-        <Route exact path="/profile" component={ProfilePage} />
-        <Route exact path="/search" component={SearchPage} />
+        <AuthRoute exact path="/notifications" component={NotificationPage} />
+        <AuthRoute exact path="/post/:postId" component={PostDetailPage} />
+        <AuthRoute exact path="/profile" component={ProfilePage} />
+        <AuthRoute exact path="/search" component={SearchPage} />
         <Route exact path="/signin" component={SigninPage} />
         <Route exact path="/signup" component={SignupPage} />
       </Switch>
