@@ -14,14 +14,14 @@ import {
   IconButton,
   makeStyles,
   Typography,
-  useTheme
+  useTheme,
 } from "@material-ui/core";
 import CloseIcon from "@mui/icons-material/Close";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 let useStyles = makeStyles((theme) => ({
   root: {
-    height: "100%"
+    height: "100%",
   },
   body: {
     flex: 1,
@@ -30,51 +30,51 @@ let useStyles = makeStyles((theme) => ({
     MsOverflowStyle: "none",
     scrollbarWidth: "none",
     "&::-webkit-scrollbar": {
-      display: "none"
+      display: "none",
     },
     "& > *": {
       backgroundColor: "#fff",
-      marginBottom: "25px"
-    }
+      marginBottom: "25px",
+    },
   },
   subtitle: {
     padding: "10px 0",
-    fontWeight: 600
+    fontWeight: 600,
   },
   text: {
-    color: theme.palette.grey[600]
+    color: theme.palette.grey[600],
   },
   overlayText: {
-    color: "#fff"
+    color: "#fff",
   },
   icon: {
-    width: "15px"
+    width: "15px",
   },
   btn: {
     color: theme.palette.grey[500],
     border: "1px solid #eeeeee",
     fontWeight: 600,
     "&:hover": {
-      color: "#000"
-    }
+      color: "#000",
+    },
   },
   btnComment: {
     color: theme.palette.primary.light,
     border: `1px solid ${theme.palette.grey[400]}`,
     fontWeight: 600,
     "&:hover": {
-      color: theme.palette.primary.main
-    }
+      color: theme.palette.primary.main,
+    },
   },
   image: {
     "&:hover": {
-      cursor: "pointer"
-    }
+      cursor: "pointer",
+    },
   },
   likeStyles: {
     background: "linear-gradient(180deg, #d53369 0%, #daae51 100%)",
-    color: "#fff"
-  }
+    color: "#fff",
+  },
 }));
 
 const PostDetailPage = ({ match }) => {
@@ -91,62 +91,68 @@ const PostDetailPage = ({ match }) => {
 
   const showComments = () => {
     return postComments.map((comment, i) => {
-      let liked = Boolean(comment.likes.find(item => Number(item) === Number(user.id)))
+      let liked = Boolean(
+        comment.likes.find((item) => Number(item) === Number(user.id))
+      );
       return (
-      <Grid
-        key={i}
-        container
-        wrap="nowrap"
-        style={{
-          padding: "12px",
-          marginBottom: "24px",
-          backgroundColor: "#fff"
-        }}
-      >
-        <Grid item container>
-          <Grid item container wrap="nowrap">
-            <Grid item style={{ paddingTop: "36px" }}>
-              <Avatar alt={comment.name}>{comment.email[0]}</Avatar>
-            </Grid>
-            <Grid item container style={{ paddingLeft: "12px" }}>
-              <Grid
-                item
-                container
-                justifyContent="space-between"
-                alignItems="center"
-              >
-                <Typography variant="body1" style={{ fontWeight: 600 }}>
-                  {comment.email.split("@")[0]}
-                </Typography>
-                <Typography variant="caption">
-                  {comment.likes.length} likes
+        <Grid
+          key={i}
+          container
+          wrap="nowrap"
+          style={{
+            padding: "12px",
+            marginBottom: "24px",
+            backgroundColor: "#fff",
+          }}
+        >
+          <Grid item container>
+            <Grid item container wrap="nowrap">
+              <Grid item style={{ paddingTop: "36px" }}>
+                <Avatar alt={comment.name}>{comment.email[0]}</Avatar>
+              </Grid>
+              <Grid item container style={{ paddingLeft: "12px" }}>
+                <Grid
+                  item
+                  container
+                  justifyContent="space-between"
+                  alignItems="center"
+                >
+                  <Typography variant="body1" style={{ fontWeight: 600 }}>
+                    {comment.email.split("@")[0]}
+                  </Typography>
+                  <Typography variant="caption">
+                    {comment.likes.length} likes
+                  </Typography>
+                </Grid>
+                <Grid item style={{ padding: "12px 0", width: "100%" }}>
+                  <hr />
+                </Grid>
+                <Typography variant="body2">
+                  {comment.body.charAt(0).toUpperCase() + comment.body.slice(1)}
+                  .
                 </Typography>
               </Grid>
-              <Grid item style={{ padding: "12px 0", width: "100%" }}>
-                <hr />
-              </Grid>
-              <Typography variant="body2">
-                {comment.body.charAt(0).toUpperCase() + comment.body.slice(1)}.
-              </Typography>
             </Grid>
-          </Grid>
-          <Grid
-            container
-            justifyContent="flex-end"
-            style={{ paddingTop: "12px" }}
-          >
-            <Button className={classes.btn}>reply</Button>
-            <Button
-              onClick={(e) => handleCommentLike(e, comment.id)}
-              className={liked ? `${classes.btn} ${classes.likeStyles}` : classes.btn}
-              style={{ marginLeft: "12px",}}
+            <Grid
+              container
+              justifyContent="flex-end"
+              style={{ paddingTop: "12px" }}
             >
-              like
-            </Button>
+              <Button className={classes.btn}>reply</Button>
+              <Button
+                onClick={(e) => handleCommentLike(e, comment.id)}
+                className={
+                  liked ? `${classes.btn} ${classes.likeStyles}` : classes.btn
+                }
+                style={{ marginLeft: "12px" }}
+              >
+                like
+              </Button>
+            </Grid>
           </Grid>
         </Grid>
-      </Grid>
-    )});
+      );
+    });
   };
 
   const duration = 300;
@@ -160,7 +166,7 @@ const PostDetailPage = ({ match }) => {
     backgroundPosition: "center",
     backgroundSize: "cover",
     transition: `opacity ${duration}ms ease-in-out`,
-    opacity: 0
+    opacity: 0,
   };
 
   const defaultIconStyle = {};
@@ -171,27 +177,30 @@ const PostDetailPage = ({ match }) => {
     entering: { opacity: 0, display: "flex" },
     entered: { opacity: 1 },
     exiting: { opacity: 0 },
-    exited: { opacity: 0, display: "none" }
+    exited: { opacity: 0, display: "none" },
   };
 
   const transitionCommentsStyles = {
     entering: { opacity: 0.5, display: "flex" },
     entered: { opacity: 1 },
     exiting: { opacity: 0.5 },
-    exited: { opacity: 0, display: "none" }
+    exited: { opacity: 0, display: "none" },
   };
 
   const transitionIconStyles = {
     entering: {
       transform: "rotate(270deg)",
-      color: theme.palette.secondary.light
+      color: theme.palette.secondary.light,
     },
     entered: { transform: "rotate(0)", color: theme.palette.primary.main },
     exiting: {
       transform: "rotate(270deg)",
-      color: theme.palette.primary.light
+      color: theme.palette.primary.light,
     },
-    exited: { transform: "rotate(180deg)", color: theme.palette.secondary.main }
+    exited: {
+      transform: "rotate(180deg)",
+      color: theme.palette.secondary.main,
+    },
   };
 
   // handlers
@@ -218,11 +227,11 @@ const PostDetailPage = ({ match }) => {
       name: user.name,
       email: user.email,
       body: value,
-      likes: []
-    }
+      likes: [],
+    };
     dispatch(allActions.databaseActions.addComment(newComment));
-    setValue("")
-  }
+    setValue("");
+  };
 
   // get post data
   useEffect(() => {
@@ -245,7 +254,7 @@ const PostDetailPage = ({ match }) => {
     } else if (post && comments.length && postComments.length) {
       let myComments = comments.filter((element) => element.postId === post.id);
       if (postComments.length !== myComments.length) {
-        setPostComments(myComments)
+        setPostComments(myComments);
       }
     }
   }, [comments, post, postComments]);
@@ -282,7 +291,7 @@ const PostDetailPage = ({ match }) => {
               minHeight: "300px",
               backgroundPosition: "bottom center",
               backgroundSize: "cover",
-              marginBottom: 0
+              marginBottom: 0,
             }}
           />
           <Grid style={{ marginBottom: 0, padding: "12px 12px 0 12px" }}>
@@ -337,7 +346,7 @@ const PostDetailPage = ({ match }) => {
                   <KeyboardArrowDownIcon
                     style={{
                       ...defaultIconStyle,
-                      ...transitionIconStyles[state]
+                      ...transitionIconStyles[state],
                     }}
                   />
                 )}
@@ -351,7 +360,7 @@ const PostDetailPage = ({ match }) => {
                 style={{
                   backgroundColor: "#eeeeee",
                   ...defaultCommentsStyle,
-                  ...transitionCommentsStyles[state]
+                  ...transitionCommentsStyles[state],
                 }}
               >
                 {showComments()}
@@ -359,31 +368,31 @@ const PostDetailPage = ({ match }) => {
             )}
           </Transition>
           <form onSubmit={handleSubmit}>
-          <Grid
-            container
-            alignItems="center"
-            style={{ padding: "12px", marginBottom: 0 }}
-          >
-            <textarea
-              value={value}
-              onChange={(e) => setValue(e.target.value)}
-              disabled={user.id === post.userId}
-              rows="5"
-              style={{ flex: 1 }}
-              required
-            ></textarea>
-          </Grid>
-          <Grid style={{ padding: "0 12px 12px 12px" }}>
-            <Button
-              disabled={user.id === post.userId}
-              fullWidth
-              className={classes.btnComment}
-              type="submit"
+            <Grid
+              container
+              alignItems="center"
+              style={{ padding: "12px", marginBottom: 0 }}
             >
-              add comment
-            </Button>
-          </Grid></form>
-          
+              <textarea
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+                disabled={user.id === post.userId}
+                rows="5"
+                style={{ flex: 1 }}
+                required
+              ></textarea>
+            </Grid>
+            <Grid style={{ padding: "0 12px 12px 12px" }}>
+              <Button
+                disabled={user.id === post.userId}
+                fullWidth
+                className={classes.btnComment}
+                type="submit"
+              >
+                add comment
+              </Button>
+            </Grid>
+          </form>
         </Grid>
       ) : (
         <Grid
@@ -409,7 +418,7 @@ const PostDetailPage = ({ match }) => {
               style={{
                 backgroundImage: `url(${post.image})`,
                 ...defaultStyle,
-                ...transitionStyles[state]
+                ...transitionStyles[state],
               }}
             >
               <Grid
@@ -421,7 +430,7 @@ const PostDetailPage = ({ match }) => {
               >
                 {/* Column 1 */}
                 <Grid container>
-                  <Avatar alt={author.name} src="" />
+                  <Avatar alt={author.username} src={author.avatar} />
                   <Grid style={{ paddingLeft: "10px" }}>
                     <Typography className={classes.overlayText}>
                       {author.name}
