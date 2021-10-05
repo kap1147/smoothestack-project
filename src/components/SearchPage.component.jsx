@@ -51,7 +51,6 @@ const SearchPage = ({ history }) => {
   };
 
   useEffect(() => {
-    console.log("effect triggured");
     if (posts.length && query.length) {
       if (query.toLowerCase() === "all") {
         setResults([...posts]);
@@ -64,9 +63,6 @@ const SearchPage = ({ history }) => {
       }
     }
   }, [query, posts]);
-
-  console.log(results);
-  console.log("posts: ", posts);
 
   return (
     <Grid container direction="column" className={classes.root}>
