@@ -4,8 +4,10 @@ import {
   SET_COMMENTS,
   SET_POSTS,
   SET_USERS,
-  TOGGLE_LIKE_COMMENT
+  TOGGLE_LIKE_COMMENT,
 } from "../types";
+
+import { avatarList } from "../utils";
 
 // helper functions
 const addImages = (dispatch, posts) => {
@@ -20,6 +22,11 @@ const addImages = (dispatch, posts) => {
     });
 };
 
+const addAvatars = (arr) => {
+  arr.forEach((item, i) => (item.avatar = avatarList[i]));
+  return arr;
+};
+
 const addLikes = (arr) => {
   arr.forEach((item) => (item.likes = 3 * Math.floor(Math.random() * item.id)));
   return arr;
@@ -27,7 +34,7 @@ const addLikes = (arr) => {
 
 // Actions
 const addComment = (comment) => (dispatch) => {
-  dispatch({type: ADD_COMMENT, payload: comment})
+  dispatch({ type: ADD_COMMENT, payload: comment });
 };
 
 const fetchComments = () => (dispatch) => {
@@ -56,6 +63,8 @@ const fetchUsers = () => (dispatch) => {
   fetch("https://jsonplaceholder.typicode.com/users")
     .then((response) => response.json())
     .then((data) => {
+      data.splice(2, 1);
+      let users = addAvatars(data);
       let testUser = {
         id: 3,
         avatar:
@@ -66,10 +75,10 @@ const fetchUsers = () => (dispatch) => {
         address: data[0].address,
         phone: "864.434.1122",
         website: "smoothestack.com",
-        company: data[0].company
+        company: data[0].company,
       };
-      data[2] = testUser;
-      dispatch({ type: SET_USERS, payload: data });
+      users.splice(2, 0, testUser);
+      dispatch({ type: SET_USERS, payload: users });
     });
   dispatch({ type: LOADING_DB, payload: false });
 };
@@ -78,4 +87,10 @@ const toggleLikeComment = (id, userId) => (dispatch) => {
   dispatch({ type: TOGGLE_LIKE_COMMENT, payload: { id, userId } });
 };
 
-export default { addComment, fetchComments, fetchPosts, fetchUsers, toggleLikeComment };
+export default {
+  addComment,
+  fetchComments,
+  fetchPosts,
+  fetchUsers,
+  toggleLikeComment,
+};
